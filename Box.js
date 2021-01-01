@@ -11,17 +11,21 @@ class Box{
         //this.image = loadImage("sprites/base.png");
         World.add(world, this.body);
     }
-    display(){
-        //imageMode(CENTER);
-        //image(this.image, 0, 0, this.width, this.height);
-        var pos =this.body.position;
-        rectMode(CENTER);
-        fill("yellow");
-        rect(pos.x, pos.y, this.width, this.height);
+   display(){
+       
+        if(this.body.speed <3){
+        var angle = this.body.angle;
+        var pos= this.body.position;
         push();
-        this.visible=this.visible-5;
-        tint(255,this.visible);
-        //rect(this.rect,this.body.position.x,this.body.position.y,50,50);
+        translate(pos.x, pos.y);
+        rotate(angle);
+        rectMode(CENTER);
+        rect(0,0,this.width, this.height);
         pop();
+      }else{
+        World.remove(world, this.body);
+        
+        
+      }
     }
 }
